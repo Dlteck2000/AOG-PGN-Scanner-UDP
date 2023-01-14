@@ -72,18 +72,17 @@ void loop() {
   ether.packetLoop(ether.packetReceive());
 }
 
-void udpSteerRecv(uint16_t dest_port, uint8_t src_ip[IP_LEN], uint16_t src_port, uint8_t* udpData, uint16_t len)
 {
   for (int16_t i = 0; i < len; i++)
   {
+    Serial.print("[");
+    Serial.print(i);
+    Serial.print("]");
     Serial.print(udpData[i]);
     Serial.print("(");
     Serial.print(udpData[i], HEX);
     Serial.print(")");
     Serial.print("\t");
-
   }
-  Serial.print("[");
-  Serial.print(len);
-  Serial.println("]");
+  Serial.println(len);
 }
