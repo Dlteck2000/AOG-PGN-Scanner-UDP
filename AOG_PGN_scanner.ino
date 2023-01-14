@@ -74,34 +74,16 @@ void loop() {
 
 void udpSteerRecv(uint16_t dest_port, uint8_t src_ip[IP_LEN], uint16_t src_port, uint8_t* udpData, uint16_t len)
 {
-  Serial.print("; D2: ");
-  Serial.print(udpData[2], HEX);
-  Serial.print(" (");
-  Serial.print(udpData[2]);
-  Serial.print(")");
-  Serial.print("; D3: ");
-  Serial.print(udpData[3], HEX);
-  Serial.print(" (");
-  Serial.print(udpData[3]);
-  Serial.print(")");
-  Serial.print("; D4: ");
-  Serial.print(udpData[4]);
-  Serial.print("; D5: ");
-  Serial.print(udpData[5]);
-  Serial.print("; D6: ");
-  Serial.print(udpData[6]);
-  Serial.print("; D7: ");
-  Serial.print(udpData[7]);
-  Serial.print("; D8: ");
-  Serial.print(udpData[8]);
-  Serial.print("; D9: ");
-  Serial.print(udpData[9]);
-  Serial.print("; D10: ");
-  Serial.print(udpData[10]);
-  Serial.print("; D11: ");
-  Serial.print(udpData[11]);
-  Serial.print("; D12: ");
-  Serial.print(udpData[12]);
-  Serial.print("; D13: ");
-  Serial.println(udpData[13]);
+  for (int16_t i = 0; i < len; i++)
+  {
+    Serial.print(udpData[i]);
+    Serial.print("(");
+    Serial.print(udpData[i], HEX);
+    Serial.print(")");
+    Serial.print("\t");
+
+  }
+  Serial.print("[");
+  Serial.print(len);
+  Serial.println("]");
 }
