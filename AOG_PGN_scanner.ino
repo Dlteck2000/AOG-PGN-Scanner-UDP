@@ -25,8 +25,6 @@ uint8_t Ethernet::buffer[200]; // udp send and receive buffer
 const uint8_t LOOP_TIME = 200; // 5hz
 uint32_t lastTime = LOOP_TIME;
 uint32_t currentTime = LOOP_TIME;
-uint32_t fifthTime = 0;
-uint16_t count = 0;
 
 // Gestion du temps de communication entre AOG et la carte machine
 uint8_t watchdogTimer = 20; // Max 20*200ms = 4s (LOOP TIME) si plus de 20 déclaration de perte de communication avec le module
@@ -72,6 +70,7 @@ void loop() {
   ether.packetLoop(ether.packetReceive());
 }
 
+void udpSteerRecv(uint16_t dest_port, uint8_t src_ip[IP_LEN], uint16_t src_port, uint8_t* udpData, uint16_t len)
 {
   for (int16_t i = 0; i < len; i++)
   {
